@@ -5,6 +5,7 @@ class CalendarPrinter
     private $year;
     private $months;
     private $calendar;
+    private $calendarByMonthsWeeksAndDays;
 
     /**
      * CalendarPrinter constructor.
@@ -15,7 +16,10 @@ class CalendarPrinter
         $this->year = $year;
         $this->months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         $this->calendar = [];
+        $this->calendarByMonthsWeeksAndDays = [];
+
         $this->fulfillCalendar();
+        $this->fulfillCalendarByMonthsWeeksAndDays();
     }
 
     private function getMonthDays ($month) : int {
@@ -27,7 +31,7 @@ class CalendarPrinter
         return date('l', strtotime($date));
     }
 
-    private function fulfillCalendar () :void {
+    private function fulfillCalendar () {
         foreach ($this->months as $month) {
             $monthDays = $this->getMonthDays($month);
             $dateToDayOfWeek = [];
@@ -41,4 +45,30 @@ class CalendarPrinter
             }
         }
     }
+
+    private function fulfillCalendarByMonthsWeeksAndDays () :void {
+        $monthToWeekDaysArr = [];
+
+        foreach ($this->calendar as $monthIndex=>$month) {
+            $week = 1;
+            foreach ($month as $date => $day) {
+                $monthToWeekDaysArr[$monthIndex][$week][$day] = $date;
+
+                if ($date === 1) {
+                    $week = 1;
+                }
+
+                if ($day === 'Sunday') {
+                    $week ++;
+                }
+
+            }
+        }
+
+
+        $this->calendarByMonthsWeeksAndDays = $monthToWeekDaysArr;
+    }
 }
+
+
+
