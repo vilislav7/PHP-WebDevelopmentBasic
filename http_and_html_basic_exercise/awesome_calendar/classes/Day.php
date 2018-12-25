@@ -69,7 +69,13 @@ class Day
     public function getWeek(): int
     {
         $date = "{$this->year->getYear()}-{$this->month->getMonthNum()}-{$this->date}";
-        return ceil((date('d',strtotime($date)) - date('w',strtotime($date)) - 1) / 7) + 1;
+        $day = (int)date('w', strtotime($date));
+        $week = ceil((date('d',strtotime($date)) - date('w',strtotime($date)) - 1) / 7);
+
+        if ($day === 0) {
+            return $week;
+        }
+        return $week + 1;
     }
 
     private function setWeekDay () : void {
