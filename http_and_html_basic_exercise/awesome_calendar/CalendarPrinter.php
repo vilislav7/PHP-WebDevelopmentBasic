@@ -28,10 +28,10 @@ class CalendarPrinter
 
     private function getWeekDay ($month, $day) : string {
         $date = "{$this->year}-{$month}-{$day}";
-        return date('l', strtotime($date));
+        return date('w', strtotime($date));
     }
 
-    private function fulfillCalendar () {
+    private function fulfillCalendar () : void {
         foreach ($this->months as $month) {
             $monthDays = $this->getMonthDays($month);
             $dateToDayOfWeek = [];
@@ -58,17 +58,35 @@ class CalendarPrinter
                     $week = 1;
                 }
 
-                if ($day === 'Sunday') {
+                if ($day === 7) {
                     $week ++;
                 }
-
             }
         }
 
 
         $this->calendarByMonthsWeeksAndDays = $monthToWeekDaysArr;
     }
+
+    public function printMonth ($month) :void {
+        $currentMonth = $this->calendarByMonthsWeeksAndDays[$month];
+        var_dump($currentMonth);
+        $currentMonthCount = count($currentMonth);
+
+        for ($i = 1; $i <= $currentMonthCount; $i++) {
+            $currentWeek = $currentMonth[$i];
+            $currentWeekCount = count($currentWeek);
+
+            for ($j = 1; $j < $currentWeekCount; $j++){
+                $currentDay = $currentWeek[$j];
+                echo $currentDay. ' - ';
+            }
+            echo PHP_EOL;
+        }
+    }
 }
 
+$d = new CalendarPrinter(2018);
+$d->printMonth(1);
 
 
