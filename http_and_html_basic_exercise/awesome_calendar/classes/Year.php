@@ -54,6 +54,7 @@ class Year
         }
     }
 }
+
 $year = new Year(2018);
 $months = $year->getMonths();
 

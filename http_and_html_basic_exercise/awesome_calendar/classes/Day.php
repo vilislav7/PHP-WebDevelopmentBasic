@@ -66,9 +66,10 @@ class Day
     /**
      * @return int
      */
-    public static function getWeek(): int
+    public function getWeek(): int
     {
-        return self::$week;
+        $date = "{$this->year->getYear()}-{$this->month->getMonthNum()}-{$this->date}";
+        return ceil((date('d',strtotime($date)) - date('w',strtotime($date)) - 1) / 7) + 1;
     }
 
     private function setWeekDay () : void {
@@ -77,15 +78,5 @@ class Day
 
         $this->weekDay = date('l', strtotime($date));
         $this->weekIndex = $day > 0 ? $day : 7;
-
-//        echo $this->weekIndex . ' ----------------- ' . PHP_EOL;
-
-        if ($this->weekIndex === 1) {
-            self::$week = 1;
-        }
-
-        if ($this->weekIndex === 7) {
-            self::$week = 4 ;
-        }
     }
 }
