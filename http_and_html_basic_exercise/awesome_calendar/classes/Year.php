@@ -58,22 +58,3 @@ class Year
         }
     }
 }
-//
-//$year = new Year(2018);
-//$months = $year->getMonths();
-//
-//foreach ($months as $month) {
-//    echo $month->getName() . ' - ';
-//    echo $month->getSize().' size. ';
-//    echo $month->getMonthNum() . 'th month';
-//    echo '<br>';
-//    $days = $month->getDays();
-//    echo '<ul>';
-//    foreach ($days as $day) {
-//        echo '<li>' . $day->getWeekDay().' - '. $day->getWeekIndex().'th day of the week.'.' Week number - '. $day->getWeek() .'</li>';
-//        echo '<br>';
-//    }
-//    echo '</ul>';
-//    echo '<br>';
-//
-//}

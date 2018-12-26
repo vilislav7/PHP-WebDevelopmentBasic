@@ -7,6 +7,20 @@ class CalendarPrinter
     private $year;
     public const ROWS = 6;
     public const COLS = 7;
+    public const MONTHS = [
+        1 => 'January',
+        2 => 'February',
+        3 => 'March',
+        4 => 'April',
+        5 => 'May',
+        6 => 'June',
+        7 => 'July',
+        8 => 'August',
+        9 => 'September',
+        10 => 'October',
+        11 => 'November',
+        12 => 'December'
+    ];
 
     /**
      * CalendarPrinter constructor.
@@ -17,14 +31,20 @@ class CalendarPrinter
         $y = new Year($year);
         $this->year = $y;
 
-        $this->printMonth(2);
+        foreach (self::MONTHS as $month=>$monthName) {
+
+            $this->printMonth($month, $monthName);
+        }
+
     }
 
-    public function printMonth (int $month) : void {
+    public function printMonth (int $month, string $monthName) : void {
         $monthDays = $this->getMonthDays($month);
 
+        echo '<div class="table">';
+
         echo '<table>'.PHP_EOL;
-        echo "<p> Month {$month}" . '</p><br>';
+        echo "<p> {$monthName}" . '</p><br>';
 
         echo '  <tr>'.PHP_EOL;
         echo '    <th>'.PHP_EOL;
@@ -78,6 +98,7 @@ class CalendarPrinter
 
         }
         echo '</table>'.PHP_EOL;
+        echo '</div>';
 
     }
 
