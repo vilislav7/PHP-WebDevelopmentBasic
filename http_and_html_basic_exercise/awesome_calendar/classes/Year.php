@@ -43,6 +43,10 @@ class Year
         return $this->months;
     }
 
+    public function getMonth(int $month) : Month {
+        return $this -> months[$month];
+    }
+
 
     private function getMonthSize($month): int {
         return cal_days_in_month(CAL_GREGORIAN, $month, $this->year);
@@ -50,26 +54,26 @@ class Year
 
     private function createMonths() : void {
         foreach ($this::MONTHS as $index => $monthName) {
-            $this -> months[] = new Month($this, $monthName, $index, $this->getMonthSize($index));
+            $this -> months[$index] = new Month($this, $monthName, $index, $this->getMonthSize($index));
         }
     }
 }
-
-$year = new Year(2018);
-$months = $year->getMonths();
-
-foreach ($months as $month) {
-    echo $month->getName() . ' - ';
-    echo $month->getSize().' size. ';
-    echo $month->getMonthNum() . 'th month';
-    echo '<br>';
-    $days = $month->getDays();
-    echo '<ul>';
-    foreach ($days as $day) {
-        echo '<li>' . $day->getWeekDay().' - '. $day->getWeekIndex().'th day of the week.'.' Week number - '. $day->getWeek() .'</li>';
-        echo '<br>';
-    }
-    echo '</ul>';
-    echo '<br>';
-
-}
+//
+//$year = new Year(2018);
+//$months = $year->getMonths();
+//
+//foreach ($months as $month) {
+//    echo $month->getName() . ' - ';
+//    echo $month->getSize().' size. ';
+//    echo $month->getMonthNum() . 'th month';
+//    echo '<br>';
+//    $days = $month->getDays();
+//    echo '<ul>';
+//    foreach ($days as $day) {
+//        echo '<li>' . $day->getWeekDay().' - '. $day->getWeekIndex().'th day of the week.'.' Week number - '. $day->getWeek() .'</li>';
+//        echo '<br>';
+//    }
+//    echo '</ul>';
+//    echo '<br>';
+//
+//}
