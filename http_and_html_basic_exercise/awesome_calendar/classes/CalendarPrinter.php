@@ -17,8 +17,13 @@ class CalendarPrinter
         $y = new Year($year);
         $this->year = $y;
 
+        $this->printMonth(2);
     }
 
+    private function getMonthDays(int $month) : array {
+        $desiredMonth = $this->year->getMonth($month);
+        return $desiredMonth->getDays();
+    }
 }
 
 $c = new CalendarPrinter(2018);
