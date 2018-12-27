@@ -1,0 +1,16 @@
+CREATE TABLE `minions` (
+	`id` INT(11) UNSIGNED NOT NULL,
+	`name` VARCHAR(50) NOT NULL,
+	`age` INT(10) UNSIGNED NOT NULL,
+	`town_id` INT(11) UNSIGNED NOT NULL,
+	PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB;
+
+CREATE TABLE `towns` (
+	`id` INT(10) UNSIGNED NOT NULL,
+	`name` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
