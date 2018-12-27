@@ -71,6 +71,9 @@ class Day
         $date = "{$this->year->getYear()}-{$this->month->getMonthNum()}-{$this->date}";
         $day = (int)date('w', strtotime($date));
         $week = ceil((date('d',strtotime($date)) - date('w',strtotime($date)) - 1) / 7);
+        if ($week === 0) {
+            $week = 2;
+        }
 
         if ($day === 0) {
             return $week;

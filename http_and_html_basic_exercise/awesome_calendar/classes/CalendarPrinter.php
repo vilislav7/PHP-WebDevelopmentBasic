@@ -32,7 +32,6 @@ class CalendarPrinter
         $this->year = $y;
 
         foreach (self::MONTHS as $month=>$monthName) {
-
             $this->printMonth($month, $monthName);
         }
 
@@ -41,10 +40,10 @@ class CalendarPrinter
     public function printMonth (int $month, string $monthName) : void {
         $monthDays = $this->getMonthDays($month);
 
-        echo '<div class="table">';
 
-        echo '<table>'.PHP_EOL;
-        echo "<p> {$monthName}" . '</p><br>';
+        echo '<div class="table">';
+        echo '<table align="center">'.PHP_EOL;
+        echo "<p class='monthName' align='center'> {$monthName}" . '</p><br>';
 
         echo '  <tr>'.PHP_EOL;
         echo '    <th>'.PHP_EOL;
@@ -85,6 +84,8 @@ class CalendarPrinter
                     }
 
                 }
+
+
                 echo '  <td>'.PHP_EOL;
 
                 if (isset($currentDay)) {
@@ -107,5 +108,3 @@ class CalendarPrinter
         return $desiredMonth->getDays();
     }
 }
-
-$c = new CalendarPrinter(2018);
