@@ -12,12 +12,8 @@ class Person
     {
         $this->products = [];
 
-        $this->setName($name);
-        try {
-            $this->setMoney($money);
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
+        $this->setName(trim($name));
+        $this->setMoney($money);
     }
 
     public function getName() : string {
@@ -32,11 +28,11 @@ class Person
         }
     }
 
-    private function setMoney(int $money) {
+    private function setMoney(int $money) :void {
         if ($money >= 0) {
             $this->money = $money;
         } else {
-            throw new Exception('Money cannot be null');
+            throw new Exception('Money cannot be negative');
         }
     }
 
