@@ -22,5 +22,11 @@ class Product
         return $this->price;
     }
 
-
+    public function getProduct (string $name) {
+        if ($this->name === $name) {
+            return $this;
+        } else {
+            return null;
+        }
+    }
 }
