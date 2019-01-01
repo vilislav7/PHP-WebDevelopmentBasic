@@ -6,5 +6,9 @@ $a = (float)readline();
 $b = (float)readline();
 $c = (float)readline();
 
-$box = new Box($a, $b, $c);
-echo $box;
+try {
+    $box = new Box($a, $b, $c);
+    echo $box;
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
