@@ -20,8 +20,16 @@ class Person
         }
     }
 
-    private function setName(string $name) {
-        $this->name = $name;
+    public function getName() : string {
+        return $this->name;
+    }
+
+    private function setName(string $name) : void {
+        if ($name === '' || empty($name)) {
+            throw new Exception('Name cannot be empty');
+        } else {
+            $this->name = $name;
+        }
     }
 
     private function setMoney(int $money) {
@@ -38,8 +46,9 @@ class Person
         if ($this->money >= $productPrice) {
             $this->money -= $productPrice;
             $this->products[] = $product;
+            echo "{$this->name} bought {$product->getName()}". PHP_EOL;
         } else {
-            echo "{$this->name} can't afford {$product->getName()}";
+            echo "{$this->name} can't afford {$product->getName()}". PHP_EOL;
         }
     }
 
