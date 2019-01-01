@@ -43,9 +43,7 @@ class Person
         }
     }
 
-    public function getPerson (string $name) : Person {
-        if ($this->name === $name) {
-            return $this;
-        }
+    public function personExist (string $name) : bool {
+        return $this->name === $name;
     }
 }
