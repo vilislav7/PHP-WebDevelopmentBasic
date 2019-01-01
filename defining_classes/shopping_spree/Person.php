@@ -55,4 +55,23 @@ class Person
     public function personExist (string $name) : bool {
         return $this->name === $name;
     }
+
+    public function __toString()
+    {
+        $person = $this->name. ' - ';
+        $personsProducts = $this->products;
+        $productsCount = count($personsProducts);
+
+        if ($productsCount === 0) {
+            $person .= 'Nothing bought';
+        }
+
+        for ($i = 0; $i<$productsCount; $i++) {
+            $currentProduct = $personsProducts[$i];
+            $glue = $i + 1 < $productsCount ? ',' : '';
+            $person .= $currentProduct->getName() . $glue;
+        }
+        $person .= PHP_EOL;
+        return $person;
+    }
 }
