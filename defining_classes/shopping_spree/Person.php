@@ -42,4 +42,10 @@ class Person
             echo "{$this->name} can't afford {$product->getName()}";
         }
     }
+
+    public function getPerson (string $name) : Person {
+        if ($this->name === $name) {
+            return $this;
+        }
+    }
 }
