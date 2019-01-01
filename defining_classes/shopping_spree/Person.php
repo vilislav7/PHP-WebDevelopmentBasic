@@ -52,6 +52,13 @@ class Person
         }
     }
 
+    public function getProducts() : array {
+        if (count($this->products) === 0) {
+            echo 'Nothing bought';
+        }
+        return $this->products;
+    }
+
     public function personExist (string $name) : bool {
         return $this->name === $name;
     }
