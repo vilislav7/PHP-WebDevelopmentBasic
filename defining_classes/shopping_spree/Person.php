@@ -32,5 +32,14 @@ class Person
         }
     }
 
+    public function addProduct (Product $product) :void {
+        $productPrice = $product->getPrice();
 
+        if ($this->money >= $productPrice) {
+            $this->money -= $productPrice;
+            $this->products[] = $product;
+        } else {
+            echo "{$this->name} can't afford {$product->getName()}";
+        }
+    }
 }
