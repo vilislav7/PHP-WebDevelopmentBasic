@@ -14,9 +14,9 @@ class Mood
     private function setName() : void {
         if ($this->points < -5) {
             $this->name = 'Angry';
-        } elseif ($this->points >= -5 && $this->points <= 0) {
+        } elseif ($this->points >= -5 && $this->points < 0) {
             $this->name= 'Sad';
-        } elseif ($this->points > 0 && $this->points <= 15) {
+        } elseif ($this->points >= 0 && $this->points <= 15) {
             $this->name = 'Happy';
         } else {
             $this->name = 'PHP';
