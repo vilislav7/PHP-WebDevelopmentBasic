@@ -57,7 +57,7 @@ class Dough
      * @param int $weight
      * @throws Exception
      */
-    public function setWeight(int $weight): void
+    private function setWeight(int $weight): void
     {
         if ($weight < 1 || $weight > 200) {
             throw new Exception('Dough weight should be in the range [1..200]');
