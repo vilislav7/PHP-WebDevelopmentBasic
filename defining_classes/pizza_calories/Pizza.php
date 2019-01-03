@@ -59,4 +59,20 @@ class Pizza
         $this->toppings[] = $topping;
     }
 
+    private function getCalories () : float {
+        $calories = 0;
+        $calories += $this->dough->getCalories();
+
+        foreach ($this->toppings as $topping) {
+            $calories += $topping->getCalories();
+        }
+
+        return $calories;
+    }
+
+    public function __toString()
+    {
+        return $this->name. ' - ' .number_format($this->getCalories(), 2, '.', '') . 'Calories.';
+    }
+
 }
