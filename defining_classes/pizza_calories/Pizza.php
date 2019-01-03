@@ -19,6 +19,14 @@ class Pizza
         $this->toppings = [];
     }
 
+    /** @param Dough $dough */
+    public function addDough (Dough $dough) : void {
+        $this->dough = $dough;
+    }
 
+    /** @param Topping $topping */
+    public function addTopping(Topping $topping) : void {
+        $this->toppings[] = $topping;
+    }
 
 }
