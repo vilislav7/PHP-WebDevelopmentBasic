@@ -29,11 +29,12 @@ class Topping
      */
     private function setType(string $type): void
     {
+        $givenType = $type;
         $type = strtolower($type);
         if ($type === 'meat' || $type === 'veggies' || $type === 'cheese' || $type === 'sauce' ) {
             $this->type = $type;
         } else {
-            throw new Exception("Cannot place {$type} on top of your pizza.");
+            throw new Exception("Cannot place {$givenType} on top of your pizza.");
         }
     }
 
@@ -45,7 +46,7 @@ class Topping
     {
         if ($weight < 1 || $weight > 50) {
             $str = strtoupper($this->type);
-            throw new Exception("{$this->type} weight should be in the range [1..50]");
+            throw new Exception("{$this->type} weight should be in the range [1..50].");
         }
         $this->weight = $weight;
     }
@@ -67,7 +68,7 @@ class Topping
     }
 
     /**
-     * @return floate
+     * @return float
      */
     public function getCalories(): float
     {

@@ -33,7 +33,8 @@ class Dough
      */
     private function setType(string $type): void
     {
-        if ($type === 'White' || $type === 'Wholegrain') {
+        $type = strtolower($type);
+        if ($type === 'white' || $type === 'wholegrain') {
             $this->type = $type;
         } else {
             throw new Exception('Invalid type of dough.');
@@ -46,7 +47,8 @@ class Dough
      */
     private function setBakingTechnique(string $bakingTechnique): void
     {
-        if ($bakingTechnique === 'Crispy' || $bakingTechnique === 'Chewy' || $bakingTechnique === 'Homemade') {
+        $bakingTechnique = strtolower($bakingTechnique);
+        if ($bakingTechnique === 'crispy' || $bakingTechnique === 'chewy' || $bakingTechnique === 'homemade') {
             $this->bakingTechnique = $bakingTechnique;
         } else {
             throw new Exception('Invalid baking technique of dough.');
@@ -60,7 +62,7 @@ class Dough
     private function setWeight(int $weight): void
     {
         if ($weight < 1 || $weight > 200) {
-            throw new Exception('Dough weight should be in the range [1..200]');
+            throw new Exception('Dough weight should be in the range [1..200].');
         }
         $this->weight = $weight;
     }
@@ -69,19 +71,19 @@ class Dough
         $typeModifier = 0;
         $btModifier = 0;
 
-        if ($this->type === 'White') {
+        if ($this->type === 'white') {
             $typeModifier = 1.5;
-        } elseif ($this->type === 'Wholegrain') {
+        } elseif ($this->type === 'wholegrain') {
             $typeModifier = 1.0;
         }
 
-        if ($this->bakingTechnique === 'Crispy') {
+        if ($this->bakingTechnique === 'crispy') {
             $btModifier = 0.9;
         }
-        if ($this->bakingTechnique === 'Chewy') {
+        if ($this->bakingTechnique === 'chewy') {
             $btModifier = 1.1;
         }
-        if ($this->bakingTechnique === 'Homemade') {
+        if ($this->bakingTechnique === 'homemade') {
             $btModifier = 1.0;
         }
         $this->calories = $this->weight * 2 * $typeModifier * $btModifier;
