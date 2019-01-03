@@ -23,6 +23,8 @@ class Dough
         $this->setType($type);
         $this->setBakingTechnique($bakingTechnique);
         $this->setWeight($weight);
+
+        $this->setCalories();
     }
 
     /**
@@ -63,5 +65,30 @@ class Dough
         $this->weight = $weight;
     }
 
+    private function setCalories() :void {
+        $typeModifier = 0;
+        $btModifier = 0;
+
+        if ($this->type === 'White') {
+            $typeModifier = 1.5;
+        } elseif ($this->type === 'Wholegrain') {
+            $typeModifier = 1.0;
+        }
+
+        if ($this->bakingTechnique === 'Crispy') {
+            $btModifier = 0.9;
+        }
+        if ($this->bakingTechnique === 'Chewy') {
+            $btModifier = 1.1;
+        }
+        if ($this->bakingTechnique === 'Homemade') {
+            $btModifier = 1.0;
+        }
+        $this->calories = $this->weight * 2 * $typeModifier * $btModifier;
+    }
+
+    public function getCalories() : float {
+        return $this->calories;
+    }
 }
 
