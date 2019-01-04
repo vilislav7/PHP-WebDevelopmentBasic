@@ -53,14 +53,15 @@ class Topping
 
     private function setCalories () :void {
         $modifier = 0;
+        $type = strtolower($this->type);
 
-        if ($this->type === 'meat') {
+        if ($type === 'meat') {
             $modifier = 1.2;
-        } elseif ($this->type === 'veggies') {
+        } elseif ($type === 'veggies') {
             $modifier = 0.8;
-        } elseif ($this->type === 'cheese') {
+        } elseif ($type === 'cheese') {
             $modifier = 1.1;
-        } elseif ($this->type === 'sauce') {
+        } elseif ($type === 'sauce') {
             $modifier = 0.9;
         }
 
