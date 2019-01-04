@@ -8,17 +8,17 @@ class Book
     private $title;
     /** @var Author $author */
     private $author;
-    /** @var int $price */
+    /** @var float $price */
     private $price;
 
     /**
      * Book constructor.
      * @param string $title
      * @param Author $author
-     * @param int $price
+     * @param float $price
      * @throws Exception
      */
-    public function __construct(string $title, Author $author, int $price)
+    public function __construct(string $title, Author $author, float $price)
     {
         $this->setTitle($title);
         $this->setAuthor($author);
@@ -46,10 +46,10 @@ class Book
     }
 
     /**
-     * @param int $price
+     * @param float $price
      * @throws Exception
      */
-    public function setPrice(int $price): void
+    public function setPrice(float $price): void
     {
         if ($price <= 0) {
             throw new Exception('Price not valid!');
@@ -57,7 +57,13 @@ class Book
         $this->price = $price;
     }
 
-
+    /**
+     * @return float
+     */
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
 
 
 }
