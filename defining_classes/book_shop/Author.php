@@ -13,6 +13,7 @@ class Author
      * Author constructor.
      * @param string $firstName
      * @param string $lastName
+     * @throws Exception
      */
     public function __construct(string $firstName, string $lastName)
     {
@@ -28,8 +29,12 @@ class Author
     }
     /**
      * @param string $lastName
+     * @throws Exception
      */
     private function setLastName ($lastName) : void {
+        if (is_numeric($lastName[0])) {
+            throw new Exception('Author not valid!');
+        }
         $this->lastName = $lastName;
     }
 
