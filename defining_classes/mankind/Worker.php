@@ -56,9 +56,9 @@ class Worker extends Human
         $salaryPerHour = round($this->weekSalary / $this->workHoursPerDay * 7, 2);
 
         $workerStr = parent::__toString();
-        $workerStr .= "Week Salary {$weekSalary}". PHP_EOL;
-        $workerStr .= "Hours per day {$workHoursPerDay}". PHP_EOL;
-        $workerStr .= "Salary per hour {$salaryPerHour}". PHP_EOL;
+        $workerStr .= "Week Salary: {$weekSalary}". PHP_EOL;
+        $workerStr .= "Hours per day: {$workHoursPerDay}". PHP_EOL;
+        $workerStr .= "Salary per hour: {$salaryPerHour}". PHP_EOL;
 
         return $workerStr;
     }

@@ -39,6 +39,6 @@ class Student extends Human
 
     public function __toString() : string
     {
-        return parent::__toString() . "Faculty number {$this->getFacultyNumber()}". PHP_EOL;
+        return parent::__toString() . "Faculty number: {$this->getFacultyNumber()}". PHP_EOL;
     }
 }
