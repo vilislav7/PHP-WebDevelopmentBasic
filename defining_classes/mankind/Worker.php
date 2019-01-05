@@ -49,21 +49,18 @@ class Worker extends Human
         $this->workHoursPerDay = $workHoursPerDay;
     }
 
-    /**
-     * @return float
-     */
-    public function getWeekSalary(): float
+    public function __toString() : string
     {
-        return $this->weekSalary;
-    }
+        $weekSalary = round($this->weekSalary, 2);
+        $workHoursPerDay = round($this->workHoursPerDay, 2);
+        $salaryPerHour = round($this->weekSalary / $this->workHoursPerDay * 7, 2);
 
-    /**
-     * @return int
-     */
-    public function getWorkHoursPerDay(): int
-    {
-        return $this->workHoursPerDay;
-    }
+        $workerStr = parent::__toString();
+        $workerStr .= "Week Salary {$weekSalary}". PHP_EOL;
+        $workerStr .= "Hours per day {$workHoursPerDay}". PHP_EOL;
+        $workerStr .= "Salary per hour {$salaryPerHour}". PHP_EOL;
 
+        return $workerStr;
+    }
 
 }
