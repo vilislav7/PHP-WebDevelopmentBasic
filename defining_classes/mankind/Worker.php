@@ -17,6 +17,9 @@ class Worker extends Human
      */
     public function __construct(string $firstName, string $lastName, float $weekSalary, int $workHoursPerDay)
     {
+        if (strlen($lastName) <= 3) {
+            throw new Exception('Expected length more than 3 symbols! Argument: lastName');
+        }
         parent::__construct($firstName, $lastName);
         $this->setWeekSalary($weekSalary);
         $this->setWorkHoursPerDay($workHoursPerDay);
@@ -26,7 +29,7 @@ class Worker extends Human
      * @param float $weekSalary
      * @throws Exception
      */
-    public function setWeekSalary(float $weekSalary): void
+    private function setWeekSalary(float $weekSalary): void
     {
         if ($weekSalary <= 10) {
             throw new Exception('Expected value mismatch! Argument weekSalary');
@@ -38,15 +41,13 @@ class Worker extends Human
      * @param int $workHoursPerDay
      * @throws Exception
      */
-    public function setWorkHoursPerDay(int $workHoursPerDay): void
+    private function setWorkHoursPerDay(int $workHoursPerDay): void
     {
         if ($workHoursPerDay < 1 || $workHoursPerDay > 12) {
             throw new Exception('Expected value mismatch! Argument workHoursPerDay');
         }
         $this->workHoursPerDay = $workHoursPerDay;
     }
-
-
 
     /**
      * @return float
