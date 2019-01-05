@@ -43,8 +43,8 @@ class Human
             throw new Exception('Expected upper case letter! Argument: lastName');
         }
 
-        if (strlen($lastName) < 4) {
-            throw new Exception('Expected length at least 4 symbols! Argument: firstName');
+        if (strlen($lastName) < 3) {
+            throw new Exception('Expected length at least 3 symbols! Argument: lastName');
         }
 
         $this->lastName = $lastName;
@@ -53,7 +53,7 @@ class Human
     /**
      * @return string
      */
-    public function getFirstName(): string
+    protected function getFirstName(): string
     {
         return $this->firstName;
     }
@@ -61,10 +61,16 @@ class Human
     /**
      * @return string
      */
-    public function getLastName(): string
+    protected function getLastName(): string
     {
         return $this->lastName;
     }
 
+    public function __toString(): string
+    {
+        $humanStr = "Firs Name: {$this->getFirstName()}" . PHP_EOL;
+        $humanStr .= "Last Name: {$this->getLastName()}" . PHP_EOL;
 
+        return $humanStr;
+    }
 }
