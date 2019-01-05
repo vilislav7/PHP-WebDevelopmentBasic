@@ -33,16 +33,12 @@ class Student extends Human
         $this->facultyNumber = $facultyNumber;
     }
 
-    public function getFacultyNumber () : string {
+    private function getFacultyNumber () : string {
         return $this->facultyNumber;
     }
 
-    public function __toString()
+    public function __toString() : string
     {
-        $studentStr = "Firs Name: {$this->getFirstName()}" . PHP_EOL;
-        $studentStr .= "Last Name: {$this->getLastName()}" . PHP_EOL;
-        $studentStr .= "Faculty number {$this->getFacultyNumber()}". PHP_EOL;
-
-        return $studentStr;
+        return parent::__toString() . "Faculty number {$this->getFacultyNumber()}". PHP_EOL;
     }
 }
