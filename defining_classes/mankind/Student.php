@@ -15,6 +15,20 @@ class Student extends Human
     public function __construct(string $firstName, string $lastName, string $facultyNumber)
     {
         parent::__construct($firstName, $lastName);
+        $this->setFacultyNumber($facultyNumber);
+    }
+
+
+    /**
+     *@param string $facultyNumber
+     *@throws Exception
+     */
+    private function setFacultyNumber ($facultyNumber) : void {
+        $facultyNumberLength = strlen($facultyNumber);
+        if ($facultyNumberLength < 5 || $facultyNumberLength > 10) {
+            throw new Exception('Invalid faculty number!');
+        }
+
         $this->facultyNumber = $facultyNumber;
     }
 
