@@ -1,5 +1,6 @@
 <?php
 
+
 class Student extends Human
 {
     /** @var string */
@@ -34,5 +35,14 @@ class Student extends Human
 
     public function getFacultyNumber () : string {
         return $this->facultyNumber;
+    }
+
+    public function __toString()
+    {
+        $studentStr = "Firs Name: {$this->getFirstName()}" . PHP_EOL;
+        $studentStr .= "Last Name: {$this->getLastName()}" . PHP_EOL;
+        $studentStr .= "Faculty number {$this->getFacultyNumber()}". PHP_EOL;
+
+        return $studentStr;
     }
 }
