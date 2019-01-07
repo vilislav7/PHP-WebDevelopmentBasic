@@ -62,13 +62,13 @@ class Song
 
     /**
      * @param string $songName
-     * @throws InvalidSongLengthException
+     * @throws InvalidSongNameException
      */
     private function setSongName(string $songName): void
     {
         $songNameLength = strlen($songName);
         if ($songNameLength < 3 || $songNameLength > 30) {
-            throw new InvalidSongLengthException();
+            throw new InvalidSongNameException();
         }
         $this->songName = $songName;
     }
