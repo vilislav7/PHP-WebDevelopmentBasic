@@ -17,13 +17,14 @@ class RadioPlaylist
      */
     public function addSong(Song $song) : void {
         $this->songs[] = $song;
+        echo 'Song added.'.PHP_EOL;
     }
 
-    public function getPlaylistCount() : int {
+    private function getPlaylistCount() : int {
         return count($this->songs);
     }
 
-    public function getPlaylistLength() : string {
+    private function getPlaylistLength() : string {
         $minutes = 0;
         $seconds = 0;
         $hours = 0;
@@ -49,6 +50,14 @@ class RadioPlaylist
         }
 
         return "{$minutes}m {$seconds}s";
+    }
+
+    public function __toString() : string
+    {
+        $playlist = "Songs added: {$this->getPlaylistCount()}".PHP_EOL;
+        $playlist .= "Playlist length: {$this->getPlaylistLength()}".PHP_EOL;
+
+        return $playlist;
     }
 }
 
