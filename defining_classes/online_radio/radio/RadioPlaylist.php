@@ -1,7 +1,5 @@
 <?php
 
-include 'Song.php';
-include '../exceptions/index.php';
 class RadioPlaylist
 {
     /** @var Song[] */
@@ -45,11 +43,7 @@ class RadioPlaylist
         $minutes = $minutes < 10 ? "0{$minutes}" : $minutes;
         $seconds = $seconds < 10 ? "0{$seconds}" : $seconds;
 
-        if ($hours >= 1) {
-            return "{$hours}h {$minutes}m {$seconds}s";
-        }
-
-        return "{$minutes}m {$seconds}s";
+        return "{$hours}h {$minutes}m {$seconds}s";
     }
 
     public function __toString() : string
