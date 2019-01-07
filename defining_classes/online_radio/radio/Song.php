@@ -12,14 +12,15 @@ class Song
     /**
      * Song constructor.
      * @param string $artistName
-     * @param string $sontName
-     * @param string $songLenght
+     * @param string $songName
+     * @param string $songLength
+     * @throws InvalidSongException
      */
     public function __construct(string $artistName, string $songName, string $songLength)
     {
-        $this->artistName = $artistName;
-        $this->songName = $songName;
-        $this->songLength = $songLength;
+        $this->setArtistName($artistName);
+        $this->setSongName($songName);
+        $this->setSongLength($songLength);
     }
 
     /**
@@ -45,6 +46,50 @@ class Song
     {
         return $this->songLength;
     }
+
+    /**
+     * @param string $artistName
+     * @throws InvalidArtistNameException
+     */
+    private function setArtistName(string $artistName): void
+    {
+        $nameLength = strlen($artistName);
+        if ($nameLength < 3 || $nameLength > 20) {
+            throw new InvalidArtistNameException();
+        }
+        $this->artistName = $artistName;
+    }
+
+    /**
+     * @param string $songName
+     * @throws InvalidSongLengthException
+     */
+    private function setSongName(string $songName): void
+    {
+        $songNameLength = strlen($songName);
+        if ($songNameLength < 3 || $songNameLength > 30) {
+            throw new InvalidSongLengthException();
+        }
+        $this->songName = $songName;
+    }
+
+    /**
+     * @param string $songLength
+     * @throws InvalidSongLengthException
+     */
+    private function setSongLength(string $songLength): void
+    {
+        [$songMinutes, $songSeconds]= explode(':', $songLength);
+        if ($songMinutes < 0 || $songMinutes > 14) {
+            throw new InvalidSongMinutesException();
+        } elseif ($songSeconds < 0 || $songSeconds > 59) {
+            throw new InvalidSongSecondsException();
+        }
+
+        $this->songLength = $songLength;
+    }
+
+
 
 
 }
