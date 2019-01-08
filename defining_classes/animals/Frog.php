@@ -9,6 +9,6 @@ class Frog extends Animal
 
     public function __toString(): string
     {
-        return 'Dog ' . parent::__toString();
+        return 'Frog ' . parent::__toString();
     }
 }
