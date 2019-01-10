@@ -2,7 +2,7 @@
 
 class ParentPerson extends FamilyPerson
 {
-    /** @var ChildPerson */
+    /** @var ChildPerson[] */
     private $children;
 
     public function __construct()

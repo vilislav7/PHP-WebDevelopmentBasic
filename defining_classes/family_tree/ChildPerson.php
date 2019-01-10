@@ -2,7 +2,7 @@
 
 class ChildPerson extends FamilyPerson
 {
-    /** @var FamilyPerson */
+    /** @var FamilyPerson[] */
     private $parents;
 
     public function __construct()
@@ -15,7 +15,7 @@ class ChildPerson extends FamilyPerson
         $this->parents[] = $person;
     }
 
-    public function getParents() : FamilyPerson {
+    public function getParents() : array {
         return $this->parents;
     }
 }
