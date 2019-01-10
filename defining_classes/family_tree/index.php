@@ -1,4 +1,8 @@
 <?php
+
+include_once 'FamilyPerson.php';
+include_once 'Person.php';
+
 /** @var Person[] $parents */
 $parents = [];
 $children = [];
@@ -34,14 +38,13 @@ while (true) {
             [$parentFirstName, $parentLastName] = explode(' ', $parentStr);
 
             if (array_key_exists($parentFirstName, $names)) {
-                $parent = $parents[$parentFirstName];
                 foreach ($parents as $parentForeach) {
-                    if ($parent->getFirstName() === $parentFirstName) {
+                    if ($parentForeach->getFirstName() === $parentFirstName) {
                         $parent = $parentForeach;
                     }
                 }
             } else {
-                $parent = new ParentPerson();
+                $parent = new Person();
                 $parents[] = $parent;
                 $names[$parentFirstName] = $parentLastName;
             }
@@ -51,10 +54,24 @@ while (true) {
 
         } else {
             //parentStr is birth date
+            $birthDate = $parentStr;
+            if (array_key_exists($birthDate, $birthDates)) {
+                foreach ($parents as $parentForeach) {
+                    if ($parentForeach->getBirthDate() === $birthDate) {
+                        $parent = $parentForeach;
+                    }
+                }
+            } else {
+                $parent = new Person();
+                $birthDates[$birthDate] = $birthDate;
+            }
+
+            $parent->setBirthDate($birthDate);
         }
 
         if (strpos($childStr, ' ') >= 0 ) {
             //childStr is first name last name
+
         } else {
             //childStr is birth date
         }
@@ -63,3 +80,5 @@ while (true) {
 //        person info
     }
 }
+
+var_dump($parents);
