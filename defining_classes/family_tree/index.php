@@ -91,6 +91,19 @@ while (true) {
 
         } else {
             //childStr is birth date
+            $birthDate = $childStr;
+
+            if (array_key_exists($birthDate, $birthDates)) {
+                foreach ($children as $childForeach) {
+                    if ($childForeach->getBirthDate() === $birthDate) {
+                        $child = $childForeach;
+                    }
+                }
+            } else {
+                $child = new Person();
+                $birthDates[$birthDate] = $birthDate;
+            }
+
         }
 
     } else {
