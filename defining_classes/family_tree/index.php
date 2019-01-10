@@ -72,6 +72,23 @@ while (true) {
         if (strpos($childStr, ' ') >= 0 ) {
             //childStr is first name last name
 
+            [$childFirstName, $childLastName] = explode(' ', $childStr);
+
+            if (array_key_exists($childFirstName, $names)) {
+                foreach ($children as $childForeach) {
+                    if ($childForeach->getFirstName() === $childFirstName) {
+                        $child = $childForeach;
+                    }
+                }
+            } else {
+                $child = new Person();
+                $children[] = $child;
+                $names[$childFirstName] = $childLastName;
+            }
+
+            $child->setFirstName($childFirstName);
+            $child->setLastName($childLastName);
+
         } else {
             //childStr is birth date
         }
