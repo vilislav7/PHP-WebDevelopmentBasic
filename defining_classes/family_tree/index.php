@@ -1,7 +1,9 @@
 <?php
-
+/** @var Person[] $parents */
 $parents = [];
 $children = [];
+$birthDates = [];
+$names = [];
 $person = new Person();
 $firstLine = readline();
 
@@ -31,10 +33,17 @@ while (true) {
             //parentStr is first name last name
             [$parentFirstName, $parentLastName] = explode(' ', $parentStr);
 
-            if (array_key_exists($parentFirstName, $parents)) {
+            if (array_key_exists($parentFirstName, $names)) {
                 $parent = $parents[$parentFirstName];
+                foreach ($parents as $parentForeach) {
+                    if ($parent->getFirstName() === $parentFirstName) {
+                        $parent = $parentForeach;
+                    }
+                }
             } else {
                 $parent = new ParentPerson();
+                $parents[] = $parent;
+                $names[$parentFirstName] = $parentLastName;
             }
 
             $parent->setFirstName($parentFirstName);
